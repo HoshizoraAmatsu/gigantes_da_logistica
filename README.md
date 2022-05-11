@@ -10,7 +10,9 @@ JSON
     "rota_id": id para identificação da rota,
     "posto_origem": posto de origem,
     "posto_destino": posto destino,
-    "distancia_km": distância em kilometros,
     "tempo_de_deslocamento": tempo de deslocamento no formato hh:mm:ss,
     "status_rota": Rota utilizavel ou não
 }
+
+TODO:
+Microserviço para menor rota - Algoritmo de Dijkstra
