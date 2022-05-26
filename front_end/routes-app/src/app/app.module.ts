@@ -8,6 +8,8 @@ import { FooterComponent } from './footer/footer.component';
 import { UpdateRouteComponent } from './update-route/update-route.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { DeleteRouteComponent } from './delete-route/delete-route.component';
+import { FindRouteComponent } from './find-route/find-route.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { NavigationComponent } from './navigation/navigation.component';
     FooterComponent,
     UpdateRouteComponent,
     HomePageComponent,
-    NavigationComponent
+    NavigationComponent,
+    DeleteRouteComponent,
+    FindRouteComponent
   ],
   imports: [
     BrowserModule,
