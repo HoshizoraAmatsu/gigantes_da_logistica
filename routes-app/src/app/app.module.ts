@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { RegisterRouteComponent } from './register-route/register-route.component';
 import { FooterComponent } from './footer/footer.component';
 import { UpdateRouteComponent } from './update-route/update-route.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { DeleteRouteComponent } from './delete-route/delete-route.component';
 import { FindRouteComponent } from './find-route/find-route.component';
+
+import { RotaService } from './routes/route.service';
 
 @NgModule({
   declarations: [
@@ -19,14 +23,17 @@ import { FindRouteComponent } from './find-route/find-route.component';
     UpdateRouteComponent,
     HomePageComponent,
     NavigationComponent,
-    DeleteRouteComponent,
     FindRouteComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [RotaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

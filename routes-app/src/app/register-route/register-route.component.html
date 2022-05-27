@@ -1,0 +1,24 @@
+<body>
+  <div class="container my-5 px-auto bg-white">
+    <h2>Registro de rotas</h2>
+    <hr>
+    <p class="text-secondary">Para registrar uma nova rota, por favor, preencha o seguinte formulário</p>
+    <br><br>
+    <form class="mt-2" #f="ngForm" (ngSubmit)="onRegistrarRota(f)" novalidate>
+      <div class="mb-3">
+        <label for="pontoDeOrigem" class="form-label">Ponto de Origem</label>
+        <input type="text" class="form-control" id="pontoDeOrigem" name="pontoOrigem" ngModel required>
+      </div>
+      <div class="mb-3">
+        <label for="pontoDeDestino" class="form-label">Ponto de Destino</label>
+        <input type="text" class="form-control" id="pontoDeDestino" name="pontoDestino" ngModel required>
+      </div>
+      <div class="mb-5">
+        <label for="distancia" class="form-label">Distância em Km</label>
+        <input type="number" class="form-control" id="distancia" name="dist" ngModel required>
+        <p class="text-secondary">Insira um número nas seguintes formas: 123 | 12.3 | 12e3</p>
+      </div>
+      <button type="submit" class="btn btn-outline-primary">Registrar</button>
+    </form>
+  </div>
+</body>
