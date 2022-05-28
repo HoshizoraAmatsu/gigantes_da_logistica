@@ -12,6 +12,12 @@ export class RotaService {
 
   }
 
+  getRota(idRota: string) {
+    return this.httpClient
+      .get<{_id: string, pontoOrigem: string, pontoDestino: string, dist: number}>
+      (`http://localhost:4000/api/rotas/${idRota}`);
+  }
+
   getRotas(): void {
     this.httpClient.get <{message: string, rotas: any}>('http://localhost:4000/api/rotas')
       .pipe(map((data) => {
@@ -20,8 +26,7 @@ export class RotaService {
             id: rota._id,
             pontoOrigem: rota.pontoOrigem,
             pontoDestino: rota.pontoDestino,
-            dist: rota.dist,
-            status: rota.status
+            dist: rota.dist
           }
         })
       }))
@@ -42,18 +47,39 @@ export class RotaService {
       id: null,
       pontoOrigem: pontoOrigem,
       pontoDestino: pontoDestino,
-      dist: dist,
-      status: true
+      dist: dist
     };
-    this.httpClient.post<{message: string}>('http://localhost:4000/api/rotas', rota)
+    this.httpClient.post<{message: string, id: string}>('http://localhost:4000/api/rotas', rota)
       .subscribe(
         (data) => {
-          console.log(data.message);
+          rota.id = data.id;
           this.rotas.push(rota);
           this.listaRotasAtualizada.next([...this.rotas]);
         }
       )
 
     console.log(this.rotas);
+  }
+
+  atualizarRota(id: string, pontoOrigem: string, pontoDestino: string, dist: number) {
+    const rota: Rota = {id, pontoOrigem, pontoDestino, dist};
+    console.log(rota)
+    this.httpClient.put<Rota>(`http://localhost:4000/api/rotas/${id}/${pontoOrigem}/${pontoDestino}/${dist}`, rota)
+      .subscribe((res => {
+        const copy = [...this.rotas];
+        const index = copy.findIndex(cli => cli.id === rota.id);
+        copy[index] = rota;
+        this.rotas = copy;
+        this.listaRotasAtualizada.next([...this.rotas]);
+      }));
+  }
+
+  removerRota(id:string): void {
+    this.httpClient.delete(`http://localhost:4000/api/rotas/${id}`).subscribe(() => {
+      this.rotas = this.rotas.filter((cli) => {
+        return cli.id !== id
+      });
+      this.listaRotasAtualizada.next([...this.rotas]);
+    })
   }
 }

@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterRouteComponent } from './register-route/register-route.component';
 import { FooterComponent } from './footer/footer.component';
-import { UpdateRouteComponent } from './update-route/update-route.component';
+import { EditRouteComponent } from './edit-route/edit-route.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FindRouteComponent } from './find-route/find-route.component';
@@ -20,7 +20,7 @@ import { RotaService } from './routes/route.service';
     AppComponent,
     RegisterRouteComponent,
     FooterComponent,
-    UpdateRouteComponent,
+    EditRouteComponent,
     HomePageComponent,
     NavigationComponent,
     FindRouteComponent

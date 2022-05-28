@@ -1,0 +1,26 @@
+<body class="container">
+  <div class="my-5">
+    <table class="table mx-5" *ngIf="rotas.length > 0">
+      <thead>
+        <tr>
+          <th scope="col">Ponto de Origem</th>
+          <th scope="col">Ponto de Destino</th>
+          <th scope="col">Distância</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rota of rotas">
+          <th scope="row">{{rota.pontoOrigem}}</th>
+          <th>{{rota.pontoDestino}}</th>
+          <th>{{rota.dist}}</th>
+          <th>
+            <a class="btn btn-outline-success mx-1" [routerLink]="['/register-route', rota.id]">Editar</a>
+            <button class="btn btn-outline-danger mx-1" (click)="onDelete(rota.id)">Deletar</button>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <p class="text-center my-5" *ngIf="rotas.length <= 0">Nenhuma rota registrada</p>
+  </div>
+</body>

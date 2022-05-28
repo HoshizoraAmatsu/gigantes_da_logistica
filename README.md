@@ -2,17 +2,10 @@
 Repositório para o projeto da disciplina ECM252-Linguagens de Programação II
 
 
-# registro_rotas
-Pacote para registro de rotas para calculo de logistica
+# Como usar?
+Para começar a utilizar o site, execute, no diretório `/routes-app`, os comandos `npm run start:server` e `ng serve --o` em terminais diferentes, e mantenha ambos em execução.
 
-JSON
-{
-    "rota_id": id para identificação da rota,
-    "posto_origem": posto de origem,
-    "posto_destino": posto destino,
-    "tempo_de_deslocamento": tempo de deslocamento no formato hh:mm:ss,
-    "status_rota": Rota utilizavel ou não
-}
+# Observações
+O site ainda está **incompleto!** A função para encontrar a rota mais curta ainda não foi completada, mas está em desenvolvimento!
 
-TODO:
-Microserviço para menor rota - Algoritmo de Dijkstra
+Quando o desenvolvimento terminar, será compartilhado um link para um vídeo no youtube que demonstra a utilização do projeto.

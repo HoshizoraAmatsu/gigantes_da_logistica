@@ -11,6 +11,7 @@ mongoose.connect('mongodb+srv://HoshizoraAmatsu:PassWord@cluster0.wohre.mongodb.
   }).catch(() => {
     console.log("Connection error!!")
   });
+
 app.use(bodyParser.json());
 
 app.use(cors({
@@ -18,19 +19,18 @@ app.use(cors({
 }));
 
 app.post('/api/rotas', (req, res, next) => {
-  const rota = new Rota({
-    pontoOrigem: req.body.pontoOrigem,
-    pontoDestino: req.body.pontoDestino,
-    dist: req.body.dist
-  })
-  rota.save();
-  console.log(rota);
-  res.status(201).json({message: 'Rota registrada'})
+  const rota = new Rota
+  rota.save()
+    .then(rotaInserida => {
+      res.status(201).json({
+        message: 'Rota inserida',
+        id: rotaInserida._id
+      })
+    });
 });
 
 app.get('/api/rotas', (req, res, next) => {
   Rota.find().then(documents => {
-    console.log(documents);
     res.status(200).json({
       message: "OK",
       rotas: documents
@@ -38,9 +38,35 @@ app.get('/api/rotas', (req, res, next) => {
   })
 });
 
-app.delete('/api/rotas/:id', (req, res, next) => {
-  console.log(req.params);
-  res.status(200).end();
+app.get('/api/rotas/:id', (req, res, next) => {
+  Rota.findById(req.params.id).then(cli => {
+    if(cli) {
+      res.status(200).json(cli);
+    } else {
+      res.status(404).json({message: "Rota não encontrada!"})
+    }
+  })
 })
+
+app.put('/api/rotas/:id/:pontoOrigem/:pontoDestino/:dist', (req, res, next) => {
+  console.log(req.params);
+  const rota = new Rota({
+    _id: req.params.id,
+    pontoOrigem: req.params.pontoOrigem,
+    pontoDestino: req.params.pontoDestino,
+    dist: req.params.dist
+  });
+  Rota.updateOne({_id: req.params.id}, rota)
+    .then((result) => {
+      res.status(200).json({message: 'Atualizacao feito com exito'})
+    });
+});
+
+app.delete('/api/rotas/:id', (req, res, next) => {
+  Rota.deleteOne({_id: req.params.id})
+    .then((result) => {
+      res.status(200).json({message: "Cliente removido!"})
+    })
+});
 
 module.exports = app;

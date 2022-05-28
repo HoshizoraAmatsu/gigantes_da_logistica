@@ -3,5 +3,4 @@ export interface Rota {
   pontoOrigem: string;
   pontoDestino: string;
   dist: number;
-  status: boolean;
 }
