@@ -13,7 +13,8 @@
           class="form-control"
           id="pontoDeOrigem"
           name="pontoOrigem"
-          [ngModel]="rota?.pontoOrigem">
+          [ngModel]="rota?.pontoOrigem"
+          ngModel>
       </div>
       <div class="mb-3">
         <label for="pontoDeDestino" class="form-label">Ponto de Destino</label>
@@ -23,7 +24,8 @@
           class="form-control"
           id="pontoDeDestino"
           name="pontoDestino"
-          [ngModel]="rota?.pontoDestino">
+          [ngModel]="rota?.pontoDestino"
+          ngModel>
       </div>
       <div class="mb-5">
         <label for="distancia" class="form-label">Distância em Km</label>
@@ -33,7 +35,8 @@
           class="form-control"
           id="distancia"
           name="dist"
-          [ngModel]="rota?.dist">
+          [ngModel]="rota?.dist"
+          ngModel>
         <p class="text-secondary">Insira um número nas seguintes formas: 123 | 12.3 | 12e3</p>
       </div>
       <button type="submit" class="btn btn-outline-primary">Salvar</button>

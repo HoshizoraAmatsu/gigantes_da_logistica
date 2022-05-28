@@ -19,7 +19,11 @@ app.use(cors({
 }));
 
 app.post('/api/rotas', (req, res, next) => {
-  const rota = new Rota
+  const rota = new Rota ({
+    pontoOrigem: req.body.pontoOrigem,
+    pontoDestino: req.body.pontoDestino,
+    dist: req.body.dist
+  })
   rota.save()
     .then(rotaInserida => {
       res.status(201).json({
@@ -48,13 +52,13 @@ app.get('/api/rotas/:id', (req, res, next) => {
   })
 })
 
-app.put('/api/rotas/:id/:pontoOrigem/:pontoDestino/:dist', (req, res, next) => {
+app.put('/api/rotas/:id', (req, res, next) => {
   console.log(req.params);
   const rota = new Rota({
     _id: req.params.id,
-    pontoOrigem: req.params.pontoOrigem,
-    pontoDestino: req.params.pontoDestino,
-    dist: req.params.dist
+    pontoOrigem: req.body.pontoOrigem,
+    pontoDestino: req.body.pontoDestino,
+    dist: req.body.dist
   });
   Rota.updateOne({_id: req.params.id}, rota)
     .then((result) => {

@@ -64,7 +64,7 @@ export class RotaService {
   atualizarRota(id: string, pontoOrigem: string, pontoDestino: string, dist: number) {
     const rota: Rota = {id, pontoOrigem, pontoDestino, dist};
     console.log(rota)
-    this.httpClient.put<Rota>(`http://localhost:4000/api/rotas/${id}/${pontoOrigem}/${pontoDestino}/${dist}`, rota)
+    this.httpClient.put<Rota>(`http://localhost:4000/api/rotas/${id}`, rota)
       .subscribe((res => {
         const copy = [...this.rotas];
         const index = copy.findIndex(cli => cli.id === rota.id);
