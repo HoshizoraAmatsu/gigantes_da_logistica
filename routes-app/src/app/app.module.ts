@@ -11,7 +11,6 @@ import { FooterComponent } from './footer/footer.component';
 import { EditRouteComponent } from './edit-route/edit-route.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { FindRouteComponent } from './find-route/find-route.component';
 
 import { RotaService } from './routes/route.service';
 
@@ -22,8 +21,7 @@ import { RotaService } from './routes/route.service';
     FooterComponent,
     EditRouteComponent,
     HomePageComponent,
-    NavigationComponent,
-    FindRouteComponent
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
